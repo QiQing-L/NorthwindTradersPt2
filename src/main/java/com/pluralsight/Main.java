@@ -37,15 +37,16 @@ public class Main {
 
             ResultSet results = preparedStatement.executeQuery();
 
+            System.out.println("ID   Name                                Price       Stock");
+            System.out.println("---  ---------------------------------   ---------   -----");
             while (results.next()) {
-                String productID = results.getString(1);
+                int productID = results.getInt(1);
                 String productName = results.getString(2);
-                String unitPrice = results.getString(3);
-                String unitsInStock = results.getString(4);
+                double unitPrice = results.getDouble(3);
+                int unitsInStock = results.getInt(4);
 
-                System.out.println("Product ID: " + productID + " Name: " + productName
-                + "Price: " + unitPrice + "Stock: " + unitsInStock);
-                System.out.println("------------------------------");
+                System.out.printf("%-4d %-35s $%-10.2f %d\n",
+                       productID, productName, unitPrice, unitsInStock);
 
             }
 
